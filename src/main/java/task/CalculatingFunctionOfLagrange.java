@@ -1,25 +1,21 @@
 package task;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CalculatingFunctionOfLagrange {
     public static void main(String[] args) {
-        List<Double> argsX = new ArrayList<Double>();
-        argsX.add(-2.0);
-        argsX.add(-4.0/3.0);
-        argsX.add(0.0);
-        argsX.add(4.0/3.0);
-        List<Double> argsY = new ArrayList<Double>();
-        argsY.add(0.0);
-        argsY.add(0.5);
-        argsY.add(1.0);
-        argsY.add(0.5);
-        Double X = 1.0;
+
         InputParameters inputParameters = new InputParameters();
-        inputParameters.argsFunction = argsX;
-        inputParameters.valueOfFunctions = argsY;
-        inputParameters.XX = X;
+
+        ParamsReader.readParams(inputParameters);
 
         System.out.println(CalculatingFunctionOfLagrange
                 .LkX(inputParameters));
@@ -28,10 +24,6 @@ public class CalculatingFunctionOfLagrange {
 
         System.out.println(CalculatingFunctionOfLagrange
                 .calculatingFunctionOfLagrange(inputParameters, Lkx));
-
-
-
-
 
     }
 
@@ -59,9 +51,7 @@ public class CalculatingFunctionOfLagrange {
             }
             LkxResult.add(result);
             result = 1.0;
-
         }
-
         return LkxResult;
     }
 }
