@@ -1,9 +1,9 @@
 package task;
 
 public class Output {
-    Double YY;
-    Double Eps_YY;
-    Boolean indicatorOfError;
+    public Double YY;
+    public Double Eps_YY;
+    public Boolean indicatorOfError;
 
     @Override
     public String toString() {

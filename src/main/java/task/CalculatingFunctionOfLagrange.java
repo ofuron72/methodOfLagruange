@@ -5,10 +5,8 @@ import com.opencsv.exceptions.CsvException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.ToIntFunction;
 
 public class CalculatingFunctionOfLagrange {
     public static void main(String[] args) {
@@ -17,6 +15,8 @@ public class CalculatingFunctionOfLagrange {
 
         ParamsReader.readParams(inputParameters);
 
+
+
         System.out.println(CalculatingFunctionOfLagrange
                 .LkX(inputParameters));
 
@@ -24,6 +24,28 @@ public class CalculatingFunctionOfLagrange {
 
         System.out.println(CalculatingFunctionOfLagrange
                 .calculatingFunctionOfLagrange(inputParameters, Lkx));
+
+        List<Double> ListXX = new ArrayList<>();
+        Double min = Collections.min(inputParameters.argsFunction);
+        Double max = Collections.max(inputParameters.argsFunction);
+        Integer countOfPoint = (int) Math.ceil((max-min)/0.01);
+
+        for (int i = 0; i < countOfPoint; i++) {
+            ListXX.add(min+i*0.01);
+        }
+        System.out.println(ListXX);
+
+        for (Double x : ListXX) {
+            inputParameters.XX=x;
+            List<Double> Lkx2 = CalculatingFunctionOfLagrange.LkX(inputParameters);
+
+            ;
+            System.out.println("XX: "+ x+" YY: "+ CalculatingFunctionOfLagrange
+                    .calculatingFunctionOfLagrange(inputParameters, Lkx2));
+
+
+        }
+
 
     }
 
